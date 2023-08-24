@@ -13,11 +13,26 @@ public class IsThereSum {
     public boolean check(int[] arr, int target){
         
 
-        for (int i = 0; i < arr.length-1; i++) {
-            for (int j = i+1; j < arr.length; j++) {
-                if (arr[i] + arr[j] == target) return true;
-            }
+        // UPDATED BETTER SOLUTION THAN NESTED LOOP
+
+
+        List<Integer> list = new ArrayList<>();
+
+        for (int num : arr) {
+            int match = target - num;
+
+            if (list.contains(match)) return true;
+            list.add(num);
         }
+
+
+
+
+        // for (int i = 0; i < arr.length-1; i++) {
+        //     for (int j = i+1; j < arr.length; j++) {
+        //         if (arr[i] + arr[j] == target) return true;
+        //     }
+        // }
 
         return false;
     }
